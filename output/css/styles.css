@@ -1,0 +1,372 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   バランス イージー LP — デザインシステム（design_rules.md / デザイン設計.md準拠）
+   ========================================================================== */
+
+:root {
+  --ink: #333333;
+  --ink-muted: #6E6E6E;
+  --brand: #e03f3b;
+  --base: #FFFFFF;
+  --sub-bg: #EDEAE5;
+  --hair: #DCD7CE;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+
+  --radius-card: 12px;
+  --radius-control: 8px;
+}
+
+/* ---------- リセット ---------- */
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: "Neue Haas Grotesk", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+  color: var(--ink);
+  background: var(--base);
+  line-height: 1.95;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+p { margin: 0 0 var(--space-lg); }
+p:last-child { margin-bottom: 0; }
+
+/* ---------- レイアウト共通 ---------- */
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+.section {
+  padding: var(--space-3xl) 0;
+  background: var(--base);
+}
+.section--sub {
+  background: var(--sub-bg);
+}
+
+/* ---------- 見出しルール ---------- */
+.h1 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--ink);
+  text-wrap: balance;
+  margin: 0 0 var(--space-xl);
+}
+.h2 {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--ink);
+  border-left: 3px solid var(--brand);
+  padding-left: var(--space-md);
+  margin: 0 0 var(--space-2xl);
+}
+
+.prose p { font-size: 15px; }
+.prose--airy p { margin-bottom: var(--space-xl); }
+.prose-lead {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: var(--space-xl);
+}
+.prose-bridge {
+  font-size: 14px;
+  color: var(--ink-muted);
+  text-align: center;
+  margin-top: var(--space-2xl);
+}
+
+.section-photo {
+  margin: 0 0 var(--space-xl);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+.section-photo img { width: 100%; height: auto; object-fit: cover; }
+.section-photo--sm { max-width: 320px; margin-left: auto; margin-right: auto; }
+.section-photo--split { max-width: 320px; margin-left: auto; margin-right: auto; }
+.section-photo--split img { aspect-ratio: 9 / 16; object-fit: cover; }
+
+/* ==========================================================================
+   1. ファーストビュー
+   ========================================================================== */
+.fv { background: var(--base); }
+.fv-media { width: 100%; aspect-ratio: 9 / 16; max-height: 78vh; overflow: hidden; background: var(--sub-bg); }
+.fv-video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.fv-body { padding: var(--space-xl); max-width: 480px; margin: 0 auto; }
+.fv-sub {
+  font-size: 16px;
+  text-align: center;
+  margin: 0 0 var(--space-xl);
+}
+
+.badge-groups { display: flex; flex-direction: column; gap: var(--space-lg); margin-bottom: var(--space-lg); }
+.badge-group { display: flex; gap: var(--space-sm); }
+.badge-group + .badge-group { padding-top: var(--space-lg); border-top: 1px solid var(--hair); position: relative; }
+/*.badge-group + .badge-group::before {
+  content: ""; position: absolute; left: 0; top: -1px; width: 28px; height: 2px; background: var(--brand);
+}*/
+.badge {
+  flex: 1;
+  background: var(--sub-bg);
+  border-radius: var(--radius-control);
+  padding: var(--space-md) var(--space-sm);
+  text-align: center;
+}
+.badge-icon { display: block; width: 34px; height: 34px; margin: 0 auto var(--space-sm); }
+.badge-icon .icon-svg { width: 100%; height: 100%; }
+.badge-label { display: block; font-size: 17px; font-weight: 700; line-height: 1.4; }
+.badge-foot { display: block; font-size: 12px; color: var(--ink-muted); margin-top: var(--space-xs); font-weight: 400; }
+
+.fv-proof {
+  display: flex; align-items: center; gap: var(--space-sm);
+  background: var(--sub-bg); border-radius: var(--radius-control);
+  padding: var(--space-sm); margin-bottom: var(--space-xl);
+}
+.fv-proof img { width: 44px; height: 44px; object-fit: cover; border-radius: 6px; flex: none; }
+.fv-proof span { font-size: 10.5px; color: var(--ink-muted); line-height: 1.6; }
+
+.fv-footline {
+  font-size: 16px;
+  color: var(--ink-muted);
+  text-align: center;
+  margin-top: var(--space-xl);
+}
+
+/* ---------- CTAボタン ---------- */
+.cta-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: var(--brand);
+  color: var(--base);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 15px var(--space-lg);
+  border-radius: var(--radius-control);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+.cta-button:hover,
+.cta-button:active { opacity: 0.85; }
+
+/* ==========================================================================
+   6. 仕組みの説明：比較図解
+   ========================================================================== */
+.diagram {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin: var(--space-2xl) 0 var(--space-lg);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.diagram.is-visible { opacity: 1; transform: translateY(0); }
+.diagram-panel {
+  background: var(--base);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+}
+.diagram-panel img { aspect-ratio: 1 / 1; object-fit: contain; }
+.diagram-heading { font-size: 13px; font-weight: 700; margin: 0 0 var(--space-sm); }
+.diagram-angle { font-size: 10px; color: var(--ink-muted); margin: var(--space-sm) 0 var(--space-xs); }
+.diagram-state { font-size: 14px; font-weight: 700; margin: 0; }
+.diagram-caption {
+  font-size: 13px;
+  line-height: 1.9;
+  text-align: center;
+  color: var(--ink);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--hair);
+}
+
+/* ==========================================================================
+   7. お客様の声
+   ========================================================================== */
+.reviews-count {
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink-muted);
+  margin-bottom: var(--space-2xl);
+}
+.review-group { margin-bottom: var(--space-2xl); }
+.review-group:last-of-type { margin-bottom: var(--space-xl); }
+.review-group-heading {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 var(--space-lg);
+}
+.review-card {
+  background: var(--sub-bg);
+  border-radius: var(--radius-card);
+  padding: var(--space-lg);
+  margin: 0 0 var(--space-md);
+}
+.review-card p { font-size: 14px; margin: 0 0 var(--space-sm); }
+.review-card cite { font-size: 11.5px; color: var(--ink-muted); font-style: normal; }
+.review-card--feature { background: var(--base); border: 1px solid var(--hair); }
+
+/* ==========================================================================
+   8. 選ばれる理由
+   ========================================================================== */
+.fact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+.fact-card {
+  background: var(--base);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+}
+.fact-icon { display: block; width: 40px; height: 40px; margin: 0 auto var(--space-sm); }
+.fact-icon .icon-svg { width: 100%; height: 100%; }
+.fact-title { font-size: 13px; font-weight: 700; margin: 0 0 var(--space-xs); }
+.fact-body { font-size: 12px; color: var(--ink-muted); margin: 0; line-height: 1.7; }
+
+/* ==========================================================================
+   9. 商品詳細・選び方
+   ========================================================================== */
+.qa-list { display: flex; flex-direction: column; gap: var(--space-xl); }
+.qa-item {
+  background: var(--sub-bg);
+  border-radius: var(--radius-card);
+  padding: var(--space-lg);
+}
+.qa-q { font-size: 14.5px; font-weight: 700; margin: 0 0 var(--space-md); }
+.qa-a { font-size: 14px; margin: 0; }
+.qa-detail { margin-top: var(--space-md); font-size: 12.5px; color: var(--ink-muted); }
+.qa-detail summary { cursor: pointer; color: var(--brand); font-weight: 700; }
+.qa-detail p { margin-top: var(--space-sm); }
+
+.option-note {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--hair);
+}
+.option-heading { font-size: 14.5px; font-weight: 700; margin: 0 0 var(--space-sm); }
+.option-note p:last-child { font-size: 13.5px; color: var(--ink-muted); }
+
+/* ==========================================================================
+   10. 価格と安心保証
+   ========================================================================== */
+.assurance-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+  margin: var(--space-xl) 0 var(--space-2xl);
+}
+.assurance-item { text-align: center; }
+.assurance-icon { display: block; width: 32px; height: 32px; margin: 0 auto var(--space-xs); }
+.assurance-icon .icon-svg { width: 100%; height: 100%; }
+.assurance-label { display: block; font-size: 10px; font-weight: 700; line-height: 1.3; }
+
+.price-box {
+  background: var(--base);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+}
+.price-line { display: flex; align-items: baseline; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+.price-line:last-child { margin-bottom: 0; }
+.price-name { font-size: 13px; color: var(--ink-muted); flex: 1; }
+.price-value { font-size: 22px; font-weight: 700; }
+.price-tax { font-size: 11px; color: var(--ink-muted); }
+
+/* ==========================================================================
+   11. FAQ（アコーディオン）
+   ========================================================================== */
+.accordion-item { border-bottom: 1px solid var(--hair); }
+.accordion-item:first-child { border-top: 1px solid var(--hair); }
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink);
+  padding: var(--space-lg) 0;
+  cursor: pointer;
+}
+.accordion-icon { color: var(--brand); font-weight: 700; flex: none; }
+.accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+.accordion-item.is-open .accordion-panel { max-height: 600px; }
+.accordion-panel p { font-size: 14px; padding-bottom: var(--space-lg); }
+.accordion-panel p:first-child { padding-top: 0; }
+
+/* ==========================================================================
+   12. 最終CTA
+   ========================================================================== */
+.cta-final { text-align: center; }
+.cta-final-assurance {
+  font-size: 12.5px;
+  color: var(--ink-muted);
+  margin-top: var(--space-lg);
+}
+
+/* ==========================================================================
+   モバイル下部固定CTA
+   ========================================================================== */
+.sticky-cta {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  padding: var(--space-md) var(--space-lg);
+  background: rgba(255, 255, 255, 0.96);
+  border-top: 1px solid var(--hair);
+  backdrop-filter: blur(4px);
+  transform: translateY(100%);
+  transition: transform 0.25s ease;
+  z-index: 100;
+}
+.sticky-cta.is-visible { transform: translateY(0); }
+.cta-button--sticky { padding: 13px var(--space-lg); font-size: 15px; }
+
+/* ==========================================================================
+   タブレット以上（デザインはモバイルファーストで拡張のみ）
+   ========================================================================== */
+@media (min-width: 600px) {
+  .wrap { padding: 0 var(--space-3xl); }
+  .fv-media { aspect-ratio: 9 / 16; max-height: 640px; margin: 0 auto; }
+  .h1 { font-size: 28px; }
+  .h2 { font-size: 22px; }
+}
+
+@media (min-width: 900px) {
+  .wrap { max-width: 760px; }
+}
+
+/* prefers-reduced-motion 配慮 */
+@media (prefers-reduced-motion: reduce) {
+  .diagram, .accordion-panel, .sticky-cta, .cta-button { transition: none; }
+}
